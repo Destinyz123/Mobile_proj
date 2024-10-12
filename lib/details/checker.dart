@@ -24,8 +24,8 @@ class _descriptioncheckuiState extends State<descriptioncheckui> {
   checktype() {
     if (widget.newtype == 'movie') {
       return Moviedetail(widget.newid);
-    } else if (widget.newtype == 'TV') {
-      return TvSeriesDetails(id:widget.newid);
+    } else if (widget.newtype == 'tv') {
+      return TvSeriesDetails(id: widget.newid);
     } else {
       return errorUI();
     }
@@ -33,6 +33,8 @@ class _descriptioncheckuiState extends State<descriptioncheckui> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: checktype(),
+    );
   }
 }

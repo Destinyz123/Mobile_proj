@@ -77,79 +77,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     TabController _tabController = TabController(length: 3, vsync: this);
 
     return Scaffold(
-        backgroundColor: Color.fromRGBO(18, 18, 18, 0.5),
+        appBar: AppBar(
+          backgroundColor: const Color.fromRGBO(18, 18, 18, 0.9),
+          title: const Text('FlixSphere'), // ใส่ชื่อของ AppBar
+          centerTitle: true,
+        ),
+        backgroundColor: Colors.black,
         body: CustomScrollView(physics: BouncingScrollPhysics(), slivers: [
           SliverAppBar(
-              backgroundColor: Color.fromRGBO(18, 18, 18, 0.9),
-              title: //switch between the trending this week and trending today
-                  Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Trending',
-                      style: TextStyle(
-                          color: Colors.white.withOpacity(0.8), fontSize: 16)),
-                  SizedBox(width: 10),
-                  Container(
-                    height: 45,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(6)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: DropdownButton(
-                        autofocus: true,
-                        underline:
-                            Container(height: 0, color: Colors.transparent),
-                        dropdownColor: Colors.black.withOpacity(0.6),
-                        icon: Icon(
-                          Icons.arrow_drop_down_sharp,
-                          color: Colors.amber,
-                          size: 30,
-                        ),
-                        value: uval,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text(
-                              'Weekly',
-                              style: TextStyle(
-                                decoration: TextDecoration.none,
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                            value: 1,
-                          ),
-                          DropdownMenuItem(
-                            child: Text(
-                              'Daily',
-                              style: TextStyle(
-                                decoration: TextDecoration.none,
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                            value: 2,
-                          ),
-                        ],
-                        onChanged: (value) {
-                          setState(() {
-                            trendingweek.clear();
-                            uval = int.parse(value.toString());
-                            // trendinglist(uval);
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              backgroundColor: const Color.fromRGBO(18, 18, 18, 0.5),
               centerTitle: true,
-              // automaticallyImplyLeading: false,
-              toolbarHeight: 60,
-              pinned: true,
               expandedHeight: MediaQuery.of(context).size.height * 0.5,
-              actions: [
-                
-              ],
+              actions: const [],
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: FutureBuilder(
@@ -158,9 +97,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return CarouselSlider(
                         options: CarouselOptions(
-                            viewportFraction: 1,
+                            viewportFraction: 0.9,
                             autoPlay: true,
-                            autoPlayInterval: Duration(seconds: 2),
+                            autoPlayInterval: const Duration(seconds: 4),
                             height: MediaQuery.of(context).size.height),
                         items: trendingweek.map((i) {
                           return Builder(builder: (BuildContext context) {
@@ -175,85 +114,90 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                                   descriptioncheckui(i['id'],
                                                       i['media_type'])));
                                     },
-                                    child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(
-                                            // color: Colors.amber,
-                                            image: DecorationImage(
-                                                colorFilter: ColorFilter.mode(
-                                                    Colors.black
-                                                        .withOpacity(0.3),
-                                                    BlendMode.darken),
-                                                image: NetworkImage(
-                                                    'https://image.tmdb.org/t/p/w500${i['poster_path']}'),
-                                                fit: BoxFit.fill)),
-                                        child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                        ' # '
-                                                        '${i['indexno'] + 1}',
-                                                        style: TextStyle(
-                                                            color: Colors.amber
-                                                                .withOpacity(
-                                                                    0.7),
-                                                            fontSize: 18),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              // color: Colors.amber,
+                                              image: DecorationImage(
+                                                  colorFilter: ColorFilter.mode(
+                                                      Colors.black
+                                                          .withOpacity(0.3),
+                                                      BlendMode.darken),
+                                                  image: NetworkImage(
+                                                      'https://image.tmdb.org/t/p/w500${i['poster_path']}'),
+                                                  fit: BoxFit.fill)),
+                                          child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(
+                                                            left: 10,
+                                                            bottom: 6),
                                                       ),
-                                                      margin: EdgeInsets.only(
-                                                          left: 10, bottom: 6),
-                                                    ),
-                                                    Container(
-                                                        margin: EdgeInsets.only(
-                                                            right: 8,
-                                                            bottom: 5),
-                                                        width: 90,
-                                                        padding:
-                                                            EdgeInsets.all(5),
-                                                        decoration: BoxDecoration(
-                                                            color: Colors.amber
-                                                                .withOpacity(
-                                                                    0.2),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .all(Radius
-                                                                        .circular(
-                                                                            8))),
-                                                        child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              //rating icon
-                                                              Icon(Icons.star,
-                                                                  color: Colors
-                                                                      .amber,
-                                                                  size: 20),
-                                                              SizedBox(
-                                                                  width: 10),
-                                                              Text(
-                                                                  '${i['vote_average']}',
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400))
-                                                            ]))
-                                                  ])
-                                            ]))));
+                                                      Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  right: 8,
+                                                                  bottom: 5),
+                                                          width: 90,
+                                                          padding:
+                                                              const EdgeInsets.all(
+                                                                  5),
+                                                          decoration: BoxDecoration(
+                                                              color: Colors
+                                                                  .amber
+                                                                  .withOpacity(
+                                                                      0.2),
+                                                              borderRadius:
+                                                                  const BorderRadius
+                                                                      .all(
+                                                                      Radius.circular(
+                                                                          8))),
+                                                          child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              children: [
+                                                                //rating icon
+                                                                const Icon(
+                                                                    Icons.star,
+                                                                    color: Colors
+                                                                        .amber,
+                                                                    size: 20),
+                                                                const SizedBox(
+                                                                    width: 10),
+                                                                Text(
+                                                                    '${i['vote_average']}',
+                                                                    style: const TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.w400))
+                                                              ]))
+                                                    ])
+                                              ])),
+                                    )));
                           });
                         }).toList(),
                       );
                     } else {
-                      return Center(
+                      return const Center(
                           child: CircularProgressIndicator(
                         color: Colors.amber,
                       ));
@@ -264,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           //////////////////////////////////////////////End of Flexible bar///////////////////////////////////////////////////////////////
           SliverList(
               delegate: SliverChildListDelegate([
-            searchbarfunc(),
+            searchbarfun(),
             Container(
                 height: 45,
                 width: MediaQuery.of(context).size.width,

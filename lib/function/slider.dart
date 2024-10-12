@@ -34,7 +34,7 @@ Widget sliderlist(
                           Moviedetail(firstlistname[index]['id']),
                     ),
                   );
-                } else if (type == 'TV') {
+                } else if (type == 'tv') {
                   Navigator.push(
                       context,
                       MaterialPageRoute(

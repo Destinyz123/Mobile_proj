@@ -88,9 +88,9 @@ class _TVseriesState extends State<TVseries> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              sliderlist(populartvseries, "Popular TV Series", "TV", 20),
-              sliderlist(onairtvseries, "On air ", "TV", 20),
-              sliderlist(topratedtvseries, "Top Rated TV Series", "TV", 20)
+              sliderlist(populartvseries, "Popular TV Series", "tv", 20),
+              sliderlist(onairtvseries, "On air ", "tv", 20),
+              sliderlist(topratedtvseries, "Top Rated TV Series", "tv", 20)
             ],
           );
         }

@@ -176,9 +176,9 @@ class _MoviedetailState extends State<Moviedetail> {
                     collapseMode: CollapseMode.parallax,
                     background: FittedBox(
                       fit: BoxFit.fill,
-                       child: trailerwatch(
-                         trailer[0]['key'],
-                       ),
+                      child: trailerwatch(
+                        trailer[0]['key'],
+                      ),
                     ),
                   ),
                 ),

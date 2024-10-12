@@ -6,14 +6,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class searchbarfunc extends StatefulWidget {
-  const searchbarfunc({super.key});
+class searchbarfun extends StatefulWidget {
+  const searchbarfun({super.key});
 
   @override
-  State<searchbarfunc> createState() => _searchbarfuncState();
+  State<searchbarfun> createState() => _searchbarfunState();
 }
 
-class _searchbarfuncState extends State<searchbarfunc> {
+class _searchbarfunState extends State<searchbarfun> {
   ////////////////////////////////search bar function/////////////////////////////////////////////
   List<Map<String, dynamic>> searchresult = [];
 
@@ -201,16 +201,7 @@ class _searchbarfuncState extends State<searchbarfunc> {
                                                               MainAxisAlignment
                                                                   .spaceBetween,
                                                           children: [
-                                                        ///////////////////////
-                                                        //media type
-                                                        Container(
-                                                          alignment: Alignment
-                                                              .topCenter,
-                                                          child: Text(
-                                                            '${searchresult[index]['media_type']}',
-                                                          ),
-                                                        ),
-
+                                                        Container(),
                                                         Container(
                                                           child: Row(
                                                             children: [
@@ -301,7 +292,6 @@ class _searchbarfuncState extends State<searchbarfunc> {
                                                             ],
                                                           ),
                                                         ),
-
                                                         Container(
                                                             width: MediaQuery.of(
                                                                         context)

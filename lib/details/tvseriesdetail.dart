@@ -226,7 +226,7 @@ class _TvSeriesDetailsState extends State<TvSeriesDetails> {
                           ),
                         )),
                     SliverList(
-                        delegate: SliverChildListDelegate([              
+                        delegate: SliverChildListDelegate([
                       Row(children: [
                         Container(
                             padding: EdgeInsets.only(left: 10, top: 10),
@@ -244,9 +244,9 @@ class _TvSeriesDetailsState extends State<TvSeriesDetails> {
                                           color: Color.fromRGBO(25, 25, 25, 1),
                                           borderRadius:
                                               BorderRadius.circular(10)),
-                                      child: Text(
-                                          TvSeriesDetails[index + 1]['genre']
-                                              .toString()));
+                                      child: Text(TvSeriesDetails[index + 1]
+                                              ['genre']
+                                          .toString()));
                                 }))
                       ]),
                       Container(
@@ -255,8 +255,8 @@ class _TvSeriesDetailsState extends State<TvSeriesDetails> {
 
                       Container(
                           padding: EdgeInsets.only(left: 10, top: 20),
-                          child: Text(
-                              TvSeriesDetails[0]['overview'].toString())),
+                          child:
+                              Text(TvSeriesDetails[0]['overview'].toString())),
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 10),
                         child: ReviewUI(TvSeriesREview),
